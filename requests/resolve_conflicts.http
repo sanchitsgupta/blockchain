@@ -1,0 +1,43 @@
+@node1 = http://127.0.0.1:8000
+@node2 = http://127.0.0.1:8001
+
+###
+
+POST {{node1}}/transaction/ HTTP/1.1
+content-type: application/json
+
+{
+    "sender": "a",
+    "recipient": "b",
+    "amount": 3.2
+}
+
+###
+
+POST {{node1}}/mine/ HTTP/1.1
+content-type: application/json
+
+###
+
+POST {{node2}}/nodes/ HTTP/1.1
+content-type: application/json
+
+{
+    "nodes": ["{{node1}}"]
+}
+
+###
+
+POST {{node1}}/resolve-conflicts/ HTTP/1.1
+content-type: application/json
+
+###
+
+POST {{node2}}/resolve-conflicts/ HTTP/1.1
+content-type: application/json
+
+###
+
+GET {{node2}}/chain/ HTTP/1.1
+
+###
