@@ -1,6 +1,10 @@
 # Simple Blockchain in Python
 
-[![Build Status](https://travis-ci.org/dvf/blockchain.svg?branch=master)](https://travis-ci.org/dvf/blockchain)
+[![CI](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)](https://github.com/sanchitsgupta/blockchain/actions/workflows/ci.yml)
+![PyPI pyversions](https://img.shields.io/github/pipenv/locked/python-version/sanchitsgupta/blockchain)
+![Linux](https://svgshare.com/i/Zhy.svg)
+![PyPI license](https://img.shields.io/github/license/sanchitsgupta/blockchain)
+
 
 This is a fork of the 'Learn Blockchains by Building One' project by [dvf](https://github.com/dvf). Make sure to check out his [blog post](https://medium.com/p/117428612f46) on the same.
 
@@ -59,7 +63,7 @@ Tests can be run using pytest:
 $ pipenv run pytest --cov=src
 ```
 
-## Improvements
+## Potential Improvements
 
 I made a note of some core blockchain features that are missing from this implementation. Interested readers can try working on these for a better understanding.
 
