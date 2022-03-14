@@ -52,6 +52,24 @@ Another option for running this program is to use Docker. Follow the instruction
 
 4. To add more nodes, add more services to the [docker-compose.yml](./docker-compose.yml)
 
+## Testing
+
+Tests can be run using pytest:
+```shell
+$ pipenv run pytest --cov=src
+```
+
+## Improvements
+
+I made a note of some core blockchain features that are missing from this implementation. Interested readers can try working on these for a better understanding.
+
+- Nodes using Public Key Infrastructure (such as for signing their transactions)
+- Transaction Validation (person sending coins has the said amount or not?)
+- Transaction Queuing (miners can work on transactions with a good payoff; at the same time the chain must make sure that no transactions starve)
+- P2P communication between nodes
+- Proof-of-Work Verification
+- Mining difficulty proportional to remaining number of coins and the network's hash rate.
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
