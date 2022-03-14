@@ -1,6 +1,6 @@
 # Simple Blockchain in Python
 
-[![CI](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)](https://github.com/sanchitsgupta/blockchain/actions/workflows/ci.yml)
+[![build](https://github.com/sanchitsgupta/blockchain/actions/workflows/ci.yml/badge.svg)](https://github.com/sanchitsgupta/blockchain/actions/workflows/ci.yml)
 ![PyPI pyversions](https://img.shields.io/github/pipenv/locked/python-version/sanchitsgupta/blockchain)
 ![Linux](https://svgshare.com/i/Zhy.svg)
 ![PyPI license](https://img.shields.io/github/license/sanchitsgupta/blockchain)
