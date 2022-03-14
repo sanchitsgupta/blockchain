@@ -1,71 +1,57 @@
-# Are you looking for the source code for my book?
-
-Please find it here: https://github.com/dvf/blockchain-book
-
-The book is available on Amazon: https://www.amazon.com/Learn-Blockchain-Building-Understanding-Cryptocurrencies/dp/1484251709
-
-# Learn Blockchains by Building One
+# Simple Blockchain in Python
 
 [![Build Status](https://travis-ci.org/dvf/blockchain.svg?branch=master)](https://travis-ci.org/dvf/blockchain)
 
-This is the source code for my post on [Building a Blockchain](https://medium.com/p/117428612f46). 
+This is a fork of the 'Learn Blockchains by Building One' project by [dvf](https://github.com/dvf). Make sure to check out his [blog post](https://medium.com/p/117428612f46) on the same.
+
+I re-implemented the same functionality for learning purposes. Along the way I made some improvements over the original codebase:
+
+- [x] Use Python 3.10
+- [x] Better code structure
+- [x] Define Models for Block and Transaction instead of passing them around as raw dictionaries
+- [x] Function type-annotations
+- [x] Use FastAPI instead of Flask
+    - In our case, this mainly helps with easier request-response validation and auto generating the OpenAPI documentation.
+- [x] Make endpoints more RESTful
+    - For eg. /mine/ endpoint must be a POST operation since it changes the server state.
+- [x] Move all business logic to the service layer
+    - For eg. mining logic should reside in the Blockchain class instead of the endpoint function.
+- [x] Docker-compose file for spinning up multiple nodes at once
 
 ## Installation
 
-1. Make sure [Python 3.6+](https://www.python.org/downloads/) is installed. 
-2. Install [pipenv](https://github.com/kennethreitz/pipenv). 
+### 1. Pipenv
 
-```
-$ pip install pipenv 
-```
-3. Install requirements  
-```
-$ pipenv install 
-``` 
+1. Make sure [Python 3.10+](https://www.python.org/downloads/) is installed.
+2. Install [pipenv](https://github.com/kennethreitz/pipenv).
+    ```shell
+    $ pip install pipenv
+    ```
+3. Install requirements
+    ```shell
+    $ pipenv install
+    ```
 
-4. Run the server:
-    * `$ pipenv run python blockchain.py` 
-    * `$ pipenv run python blockchain.py -p 5001`
-    * `$ pipenv run python blockchain.py --port 5002`
-    
-## Docker
+4. Run some nodes:
+    - `$ pipenv run uvicorn src.node_server:app --port 8000`
+    - `$ pipenv run uvicorn src.node_server:app --port 8001`
 
-Another option for running this blockchain program is to use Docker.  Follow the instructions below to create a local Docker container:
+### 2. Docker
 
-1. Clone this repository
-2. Build the docker container
+Another option for running this program is to use Docker. Follow the instructions below to spawn two nodes.
 
-```
-$ docker build -t blockchain .
-```
+1. Build the image
+    ```shell
+    $ docker-compose build
+    ```
 
-3. Run the container
+3. Run 2 nodes
+    ```
+    $ docker-compose up
+    ```
 
-```
-$ docker run --rm -p 80:5000 blockchain
-```
-
-4. To add more instances, vary the public port number before the colon:
-
-```
-$ docker run --rm -p 81:5000 blockchain
-$ docker run --rm -p 82:5000 blockchain
-$ docker run --rm -p 83:5000 blockchain
-```
-
-## Installation (C# Implementation)
-
-1. Install a free copy of Visual Studio IDE (Community Edition):
-https://www.visualstudio.com/vs/
-
-2. Once installed, open the solution file (BlockChain.sln) using the File > Open > Project/Solution menu options within Visual Studio.
-
-3. From within the "Solution Explorer", right click the BlockChain.Console project and select the "Set As Startup Project" option.
-
-4. Click the "Start" button, or hit F5 to run. The program executes in a console window, and is controlled via HTTP with the same commands as the Python version.
-
+4. To add more nodes, add more services to the [docker-compose.yml](./docker-compose.yml)
 
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
-
