@@ -7,6 +7,7 @@ name = "pypi"
 requests = "*"
 fastapi = {extras = ["all"], version = "*"}
 pytest = "*"
+pytest-cov = "*"
 
 [dev-packages]
 
