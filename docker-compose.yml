@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+
+  node1:
+    build: .
+    image: blockchain-node
+    ports:
+      - "8000:8000"
+
+  node2:
+    image: blockchain-node
+    ports:
+      - "8001:8000"

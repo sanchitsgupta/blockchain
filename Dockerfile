@@ -1,15 +1,15 @@
-FROM python:3.6-alpine
+FROM python:3.10-slim-buster
 
 WORKDIR /app
 
 # Install dependencies.
-ADD requirements.txt /app
-RUN cd /app && \
-    pip install -r requirements.txt
+RUN apt-get update && apt-get -y install gcc
+
+COPY requirements.txt ./
+RUN pip install -U pip
+RUN pip install -r requirements.txt
 
 # Add actual source code.
-ADD blockchain.py /app
+COPY src ./src
 
-EXPOSE 5000
-
-CMD ["python", "blockchain.py", "--port", "5000"]
+CMD ["uvicorn", "src.node_server:app", "--port", "8000", "--host", "0.0.0.0"]
